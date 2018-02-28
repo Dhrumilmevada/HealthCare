@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/rel_lay_doctor_login_frag">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_email_id_login"
+            android:hint="@string/email_id"
+            android:inputType="textEmailAddress"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_alert_email_id_login"
+            android:layout_below="@id/edt_email_id_login"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_phone_no_login"
+            android:hint="@string/phone_no"
+            android:layout_below="@+id/txt_alert_email_id_login"
+            android:inputType="phone"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_alert_phone_no_login"
+            android:layout_below="@id/edt_phone_no_login"/>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_registration_no_login"
+            android:hint="@string/rgistation_no"
+            android:layout_below="@id/txt_alert_phone_no_login"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_alert_registration_no_login"
+            android:layout_below="@id/edt_registration_no_login"/>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_clinic_name_login"
+            android:hint="@string/clinic_name"
+            android:layout_below="@id/txt_alert_registration_no_login"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_alert_clinic_name_login"
+            android:layout_below="@id/edt_clinic_name_login"/>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_clinic_address_login"
+            android:hint="@string/clinic_address"
+            android:layout_below="@id/txt_alert_clinic_name_login"
+            android:inputType="textMultiLine"
+            android:lines="6"
+            android:minLines="4"
+            android:maxLines="8"
+            android:scrollbars="vertical"
+            android:gravity="top|start"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_alert_clinic_address_login"
+            android:layout_below="@id/edt_clinic_address_login"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_quilification_login"
+            android:hint="@string/higher_colification"
+            android:layout_below="@id/txt_alert_clinic_address_login"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_alert_qualification_login"
+            android:layout_below="@id/edt_quilification_login"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_profession_login"
+            android:hint="@string/pratice_as"
+            android:layout_below="@id/txt_alert_qualification_login"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_alert_profession_login"
+            android:layout_below="@id/edt_profession_login"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_submit_login"
+            android:hint="@string/submit"
+            android:layout_marginStart="75dp"
+            android:layout_below="@id/txt_alert_profession_login"
+            android:layout_marginTop="25dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_cancel_login"
+            android:layout_toEndOf="@id/btn_submit_login"
+            android:layout_alignTop="@id/btn_submit_login"
+            android:hint="@string/cancel"
+            android:layout_marginStart="30dp"/>
+    </RelativeLayout>
+</ScrollView>

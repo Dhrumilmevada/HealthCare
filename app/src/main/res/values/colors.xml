@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FF3F51B5</color>
+    <color name="colorPrimaryDark">#FF303F9F</color>
+    <color name="colorAccent">#FFFF4081</color>
+    <color name="login_status_bar">#FF155a7e</color>
+    <color name="tool_bar_color">#FF186b97</color>
+    <color name="black">#FF000000</color>
+    <color name="gray">#FFa7a5a5</color>
+    <color name="white">#FFFFFFFF</color>
+
+</resources>

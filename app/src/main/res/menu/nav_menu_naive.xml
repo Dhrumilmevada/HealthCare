@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_news_feed"
+        android:title="@string/news_fee">
+    </item>
+    <item
+        android:id="@+id/nav_hospital"
+        android:title="@string/hospital">
+    </item>
+    <item
+        android:id="@+id/nav_laboratory"
+        android:title="@string/laboratory">
+    </item>
+    <item
+        android:id="@+id/nav_diet"
+        android:title="@string/diet">
+    </item>
+    <item
+        android:id="@+id/nav_workout"
+        android:title="@string/work_out">
+    </item>
+    <item
+        android:id="@+id/nav_yago_meditation"
+        android:title="@string/yoga_meditation">
+    </item>
+
+</menu>

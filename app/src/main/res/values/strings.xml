@@ -1,0 +1,124 @@
+<resources>
+    <string name="app_name">HealthCare</string>
+
+    <string name="app_logo">App logo</string>
+
+    <string name="user_name">Username</string>
+
+    <string name="user_name_email">Username  OR  Email id</string>
+
+    <string name="pass_word">Password</string>
+
+    <string name="login">Login</string>
+
+    <string name="forgot_password">forgot password?</string>
+
+    <string name="slash">|</string>
+
+    <string name="not_now">Not now</string>
+
+    <string name="footer_text">Not have an Account?</string>
+
+    <string name="signup">Sign Up</string>
+
+    <string name="phone_no">Phone No</string>
+
+    <string name="enter_phone_no">Enter Phone No</string>
+
+    <string name="submit">Submit</string>
+
+    <string name="cancel">Cancel</string>
+
+    <string name="email_id">Email id</string>
+
+    <string name="enter_email_id">Enter Email id</string>
+
+    <string name="reset_password">Reset Password</string>
+
+    <string name="enter_otp">Enter OTP Number</string>
+
+    <string name="Continue">Continue</string>
+
+    <string name="resend">Re-Send</string>
+
+    <string name="reg_info">*Enter register Email id/Phone No/Username :-</string>
+
+    <string name="reg_label">Email id/Phone No/Username</string>
+
+    <string name="new_password">New Password</string>
+
+    <string name="reenter_password">Re-enter Password</string>
+
+    <string name="name">Name</string>
+
+    <string name="patient">Patient</string>
+
+    <string name="doctor">Doctor</string>
+
+    <string name="rgistation_no">Registation No</string>
+
+    <string name="clinic_name">Clinic Name</string>
+
+    <string name="clinic_address">Clinic Address</string>
+
+    <string name="higher_colification">Higher Qualification</string>
+
+    <string name="pratice_as">Pratice As</string>
+
+    <string name="date_of_birth">Date of birth</string>
+
+    <string name="age">Age</string>
+
+    <string name="address">Address</string>
+
+    <string name="height">Height :-</string>
+
+    <string name="feet">feets</string>
+
+    <string name="inch">inches</string>
+
+    <string name="weight">Weight :-</string>
+
+    <string name="kilo">Kg</string>
+    <string name="news_fee">News feed</string>
+    <string name="hospital">Hospital</string>
+    <string name="laboratory">Laboratory</string>
+    <string name="book_appointment">Book appointment</string>
+    <string name="case_paper">Case paper</string>
+    <string name="diet">Diet</string>
+    <string name="work_out">Work out</string>
+    <string name="yoga_meditation"><![CDATA[Yaga & Meditation]]></string>
+    <string name="logout">Logout</string>
+    <string name="client">Client</string>
+    <string name="appointment">Appointment</string>
+    <string name="bookmark">Bookmark</string>
+    <string name="naive">Naive</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="close">close</string>
+    <string name="open">open</string>
+
+    <string-array name="feets_scale">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+
+    <string-array name="inches_scale">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+</resources>

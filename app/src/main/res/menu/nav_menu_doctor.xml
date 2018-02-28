@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_news_feed"
+        android:title="@string/news_fee">
+    </item>
+    <item
+        android:id="@+id/nav_client"
+        android:title="@string/client">
+    </item>
+    <item
+        android:id="@+id/nav_hospital"
+        android:title="@string/hospital">
+    </item>
+    <item
+        android:id="@+id/nav_laboratory"
+        android:title="@string/laboratory">
+    </item>
+    <item
+        android:id="@+id/nav_appointment"
+        android:title="@string/hospital">
+    </item>
+    <item
+        android:id="@+id/nav_book_appointment"
+        android:title="@string/book_appointment">
+    </item>
+    <item
+        android:id="@+id/nav_case_paper"
+        android:title="@string/case_paper">
+    </item>
+    <item
+        android:id="@+id/nav_diet"
+        android:title="@string/diet">
+    </item>
+    <item
+        android:id="@+id/nav_workout"
+        android:title="@string/work_out">
+    </item>
+    <item
+        android:id="@+id/nav_yago_meditation"
+        android:title="@string/yoga_meditation">
+    </item>
+    <item
+        android:id="@+id/nav_bookmark"
+        android:title="@string/bookmark">
+    </item>
+    <item
+        android:id="@+id/nav_logout"
+        android:title="@string/logout">
+    </item>
+
+</menu>

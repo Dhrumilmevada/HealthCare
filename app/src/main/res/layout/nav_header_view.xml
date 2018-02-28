@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:id="@+id/rel_lay_nav_header"
+    android:paddingStart="12dp"
+    android:paddingEnd="30dp"
+    android:background="@drawable/header_background_3"
+    android:layout_height="190dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:id="@+id/circle_image_profile_nav_header"
+        android:layout_marginTop="39dp"
+        app:civ_border_width="1dp"
+        app:civ_border_color="@color/white"
+        app:civ_circle_background_color="@color/white"
+        android:src="@mipmap/ic_perm_identity_black_24dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_name_nav_header"
+        android:hint="@string/name"
+        android:layout_below="@id/circle_image_profile_nav_header"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_email_nav_header"
+        android:hint="@string/email_id"
+        android:layout_below="@id/txt_name_nav_header"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_edit_profile_nav_header"
+        android:text="@string/edit_profile"
+        android:textAlignment="viewEnd"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@id/circle_image_profile_nav_header"
+        android:layout_alignParentEnd="true"
+        android:textStyle="italic"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:clickable="true"/>
+
+</RelativeLayout>

@@ -1,0 +1,30 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rel_lay_phone_no_frag"
+    tools:context="com.example.dhrumil.healthcare.resetPassword.fragment.PhoneNoFragment">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edt_phone_no"
+        android:hint="@string/enter_phone_no"
+        android:inputType="phone"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_submit"
+        android:layout_below="@id/edt_phone_no"
+        android:text="@string/submit"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_cancel"
+        android:layout_toEndOf="@id/btn_submit"
+        android:layout_alignTop="@id/btn_submit"
+        android:layout_marginStart="10dp"
+        android:text="@string/cancel"/>
+</RelativeLayout>

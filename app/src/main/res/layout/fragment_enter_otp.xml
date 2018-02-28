@@ -1,0 +1,31 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rel_lay_enter_otp_frag"
+    tools:context="com.example.dhrumil.healthcare.resetPassword.fragment.EnterOtpFragment">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edt_otp"
+        android:hint="@string/enter_otp"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_continue"
+        android:layout_below="@id/edt_otp"
+        android:text="@string/Continue"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_resend"
+        android:layout_toEndOf="@id/btn_continue"
+        android:layout_alignTop="@id/btn_continue"
+        android:layout_marginStart="10dp"
+        android:text="@string/resend"/>
+
+
+</RelativeLayout>
