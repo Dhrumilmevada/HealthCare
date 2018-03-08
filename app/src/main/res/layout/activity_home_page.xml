@@ -31,6 +31,23 @@
             android:layout_alignBottom="@id/view_pager_image_home_page"
             android:layout_marginBottom="15dp">
         </me.relex.circleindicator.CircleIndicator>
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/swipe_lay_news"
+            android:layout_below="@id/circle_indicator_home_page">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/frame_lay_news_container"
+               >
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/rec_view_news_home"
+                    />
+            </FrameLayout>
+        </android.support.v4.widget.SwipeRefreshLayout>
 
     </RelativeLayout>
 
@@ -41,4 +58,5 @@
         android:layout_gravity="start"
         >
     </android.support.design.widget.NavigationView>
+
 </android.support.v4.widget.DrawerLayout>

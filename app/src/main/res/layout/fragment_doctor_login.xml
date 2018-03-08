@@ -9,7 +9,7 @@
     android:layout_height="wrap_content"
     android:id="@+id/rel_lay_doctor_login_frag">
 
-        <EditText
+        <!--EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edt_email_id_login"
@@ -19,14 +19,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/txt_alert_email_id_login"
-            android:layout_below="@id/edt_email_id_login"/>
+            /-->
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edt_phone_no_login"
             android:hint="@string/phone_no"
-            android:layout_below="@+id/txt_alert_email_id_login"
             android:inputType="phone"/>
         <TextView
             android:layout_width="match_parent"

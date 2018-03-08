@@ -8,15 +8,21 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dhrumil.healthcare.MainActivity;
 import com.example.dhrumil.healthcare.R;
+import com.example.dhrumil.healthcare.dataBase.Database;
+import com.example.dhrumil.healthcare.dataBase.LoginCheck;
+import com.example.dhrumil.healthcare.dataBase.User;
 import com.example.dhrumil.healthcare.homePage.HomePage;
 import com.example.dhrumil.healthcare.resetPassword.OnClickInFragment;
 
@@ -32,6 +38,10 @@ public class PatientLoginFragment extends Fragment implements View.OnClickListen
 
     View view;
     private TextView txt_date_of_birth_login;
+   // private EditText edt_email_id_login;
+    private EditText edt_phone_no_login;
+    private EditText edt_age_login;
+    private EditText edt_address_login;
     private Calendar myCalender;
     private int month,year,day;
     private Spinner spin_feet_login;
@@ -44,6 +54,9 @@ public class PatientLoginFragment extends Fragment implements View.OnClickListen
     private Button btn_submit_login;
     private Button btn_cancel_login;
     private OnClickInFragment onClickFragment;
+    private Database db;
+    private LoginCheck login_Check;
+    private User user;
     @Override
     public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
             view = inflater.inflate(R.layout.fragment_patient_login,container,false);
@@ -91,8 +104,14 @@ public class PatientLoginFragment extends Fragment implements View.OnClickListen
 
         btn_submit_login = view.findViewById(R.id.btn_submit_login);
         btn_cancel_login = view.findViewById(R.id.btn_cancel_login);
-
-        }
+        //edt_email_id_login = view.findViewById(R.id.edt_email_id_login);
+        edt_address_login = view.findViewById(R.id.edt_address_login);
+        edt_age_login = view.findViewById(R.id.edt_age_login);
+        edt_phone_no_login = view.findViewById(R.id.edt_phone_no_login);
+        db = new Database(getActivity());
+        login_Check = new LoginCheck(getActivity());
+        user = new User();
+    }
 
 
     private void register() {
@@ -123,18 +142,57 @@ public class PatientLoginFragment extends Fragment implements View.OnClickListen
         switch (view.getId())
         {
             case R.id.txt_date_of_birth_login:
+                hideSoftKeyboard(edt_phone_no_login);
                 setCurrentDate();
                 DatePickerDialog dateDialog = new DatePickerDialog(getContext(),this,year,month,day);
                 dateDialog.show();
                 break;
             case R.id.btn_submit_login:
-                onClickFragment.onClickButton(HomePage.class);
+                //onClickFragment.onClickButton(HomePage.class);
+				patient_Register();
                 break;
             case R.id.btn_cancel_login:
                 onClickFragment.onClickButton(MainActivity.class);
                 break;
         }
     }
+	
+	public void patient_Register(){
+       /* if (!login_Check.isInputEditTextFilled(edt_email_id_login, "please fill the all line")) {
+            return;
+        }*/
+        if (!login_Check.isInputEditTextFilled(edt_phone_no_login, "please fill the all line")) {
+            return;
+        }
+        if (!login_Check.isMobileCheck(edt_phone_no_login, "please add mobile")) {
+            return;
+        }
+        if (!login_Check.isInputEditTextFilled(edt_age_login, "please fill the all line")) {
+            return;
+        }
+        if (!login_Check.isInputEditTextFilled(edt_address_login, "please fill the all line")) {
+            return;
+        }
+        if(!login_Check.isInputEditTextFilled(txt_date_of_birth_login,"please add the birth of date")){
+            return;
+        }
+
+        if (!db.checkUse_patient(edt_phone_no_login.getText().toString().trim())) {
+
+            user.setMobile(edt_phone_no_login.getText().toString().trim());
+           // user.setEmail(edt_email_id_login.getText().toString().trim());
+            user.setAddr(edt_address_login.getText().toString().trim());
+            user.setBirthDate(txt_date_of_birth_login.getText().toString().trim());
+            db.addPatient(user);
+            onClickFragment.onClickButton(HomePage.class);
+            // Snack Bar to show success message that record saved successfully
+        }
+        else {
+           // edt_email_id_login.setText(null);
+            Toast.makeText(getActivity(),"This mobile no or email id is already register", Toast.LENGTH_SHORT).show();
+        }
+    }
+	
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
         txt_date_of_birth_login.setText(new StringBuilder().append(day).append("-").append(month+1).append("-").append(year));
@@ -146,5 +204,10 @@ public class PatientLoginFragment extends Fragment implements View.OnClickListen
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
+    }
+
+    public void hideSoftKeyboard(View view){
+        InputMethodManager inputManager = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
     }
 }

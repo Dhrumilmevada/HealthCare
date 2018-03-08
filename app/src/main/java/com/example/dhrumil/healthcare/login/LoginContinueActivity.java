@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import com.example.dhrumil.healthcare.MainActivity;
 import com.example.dhrumil.healthcare.R;
 import com.example.dhrumil.healthcare.homePage.HomePage;
 import com.example.dhrumil.healthcare.login.Frag.DoctorLoginFragment;
@@ -65,6 +66,7 @@ public class LoginContinueActivity extends AppCompatActivity implements OnClickI
     public void getIntentData() {
         Intent i = getIntent();
         userType = i.getStringExtra(LoginActivity.USER_TYPE);
+       // emailid = i.getStringExtra(LoginActivity.EMAIL_ID);
     }
     @Override
     public void onClickButton() {
@@ -77,5 +79,12 @@ public class LoginContinueActivity extends AppCompatActivity implements OnClickI
         i.putExtra(LoginActivity.USER_TYPE,userType);
         startActivity(i);
         finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(LoginContinueActivity.this, MainActivity.class);
+        startActivity(i);
+        //super.onBackPressed();
     }
 }

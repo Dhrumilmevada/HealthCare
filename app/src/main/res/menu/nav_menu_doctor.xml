@@ -3,51 +3,64 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_news_feed"
-        android:title="@string/news_fee">
+        android:title="@string/news_fee"
+        android:checkable="true"
+        >
     </item>
     <item
         android:id="@+id/nav_client"
-        android:title="@string/client">
+        android:title="@string/client"
+        android:checkable="true">
     </item>
     <item
         android:id="@+id/nav_hospital"
-        android:title="@string/hospital">
+        android:title="@string/hospital"
+        android:checkable="true">
     </item>
     <item
         android:id="@+id/nav_laboratory"
-        android:title="@string/laboratory">
+        android:title="@string/laboratory"
+        android:checkable="true">
     </item>
     <item
         android:id="@+id/nav_appointment"
-        android:title="@string/hospital">
+        android:title="@string/hospital"
+        android:checkable="true">
     </item>
     <item
         android:id="@+id/nav_book_appointment"
-        android:title="@string/book_appointment">
+        android:title="@string/book_appointment"
+        android:checkable="true">
     </item>
     <item
         android:id="@+id/nav_case_paper"
-        android:title="@string/case_paper">
+        android:title="@string/case_paper"
+        android:checkable="true">
     </item>
     <item
         android:id="@+id/nav_diet"
-        android:title="@string/diet">
+        android:title="@string/diet"
+        android:checkable="true">
     </item>
     <item
         android:id="@+id/nav_workout"
-        android:title="@string/work_out">
+        android:title="@string/work_out"
+        android:checkable="true">
     </item>
     <item
         android:id="@+id/nav_yago_meditation"
-        android:title="@string/yoga_meditation">
+        android:title="@string/yoga_meditation"
+        android:checkable="true">
     </item>
     <item
         android:id="@+id/nav_bookmark"
-        android:title="@string/bookmark">
+        android:title="@string/bookmark"
+        android:checkable="true">
     </item>
     <item
         android:id="@+id/nav_logout"
-        android:title="@string/logout">
+        android:title="@string/logout"
+        android:checkable="true">
     </item>
 
 </menu>
