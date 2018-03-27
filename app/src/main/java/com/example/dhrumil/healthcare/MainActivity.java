@@ -1,7 +1,6 @@
 package com.example.dhrumil.healthcare;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.dhrumil.healthcare.dataBase.Database;
 import com.example.dhrumil.healthcare.dataBase.LoginCheck;
+import com.example.dhrumil.healthcare.dataBase.SharedPreference;
 import com.example.dhrumil.healthcare.homePage.HomePage;
 import com.example.dhrumil.healthcare.login.LoginActivity;
 import com.example.dhrumil.healthcare.resetPassword.ResetPassword;
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText edt_password;
     private Database db;
     private LoginCheck login_Check;
-    private SharedPreferences preferences;
+    private SharedPreference preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         edt_password = (EditText) findViewById(R.id.edt_password);
         db = new Database(this);
         login_Check = new LoginCheck(this);
-
     }
 
 
@@ -87,7 +86,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(i);
                 break;
 			case R.id.btn_login:
-                setSharedPreference(edt_username.getText().toString());
+                preferences = new SharedPreference(this,SharedPreference.USER_INFO);
+                preferences.setSharedPreference(SharedPreference.USER_NAME,edt_username.getText().toString());
                 login();
                 break;
         }
@@ -105,9 +105,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
 
             String user_type = db.getUsertype();
-            //Shared_pre sh = new Shared_pre(this);
-            String name = edt_username.getText().toString().trim();
-            //sh.setname(name);
             Intent accountsIntent = new Intent(MainActivity.this, HomePage.class);
             accountsIntent.putExtra(LoginActivity.USER_TYPE,user_type);
             startActivity(accountsIntent);
@@ -119,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void setSharedPreference(String username){
+    /*private void setSharedPreference(String username){
         preferences = getSharedPreferences("USER_INFO",MODE_PRIVATE);
         if(preferences != null)
         {
@@ -127,6 +124,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             editor.putString("USER_NAME",username);
             editor.commit();
         }
-    }
+    }*/
 }
 

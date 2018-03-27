@@ -46,4 +46,8 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         return tab_title.get(position);
     }
 
+    @Override
+    public Object instantiateItem(ViewGroup container, int position) {
+        return super.instantiateItem(container, position);
+    }
 }

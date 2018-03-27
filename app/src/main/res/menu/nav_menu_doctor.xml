@@ -22,11 +22,7 @@
         android:title="@string/laboratory"
         android:checkable="true">
     </item>
-    <item
-        android:id="@+id/nav_appointment"
-        android:title="@string/hospital"
-        android:checkable="true">
-    </item>
+
     <item
         android:id="@+id/nav_book_appointment"
         android:title="@string/book_appointment"

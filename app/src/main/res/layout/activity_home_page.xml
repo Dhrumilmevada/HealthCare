@@ -46,6 +46,14 @@
                     android:layout_height="match_parent"
                     android:id="@+id/rec_view_news_home"
                     />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/img_view_no_internet"
+                    android:src="@drawable/no_internet_modified4"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/no_internet"
+                    />
             </FrameLayout>
         </android.support.v4.widget.SwipeRefreshLayout>
 

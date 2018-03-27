@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.dhrumil.healthcare.R;
+import com.example.dhrumil.healthcare.homePage.DetailNews;
 import com.example.dhrumil.healthcare.homePage.news.common.ISO8601Parser;
 import com.example.dhrumil.healthcare.homePage.news.interFace.ItemClickListener;
 import com.example.dhrumil.healthcare.homePage.news.model.Articles;
@@ -98,12 +99,12 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedViewHolder>{
             @Override
             public void onClick(View view, int position, Boolean isLongClick) {
                    if (!isLongClick ) {
-                       Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(articles.get(position).getUrl()));
+                       /*Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(articles.get(position).getUrl()));
                        browserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                       mContext.startActivity(browserIntent);
-                      /* Intent detail = new Intent(mContext, DetailNews.class);
+                       mContext.startActivity(browserIntent);*/
+                       Intent detail = new Intent(mContext, DetailNews.class);
                        detail.putExtra(URL_LINK,articles.get(position).getUrl());
-                       mContext.startActivity(detail);*/
+                       mContext.startActivity(detail);
                    }
 
             }

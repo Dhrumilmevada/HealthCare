@@ -1,7 +1,6 @@
 package com.example.dhrumil.healthcare.login;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -18,6 +17,7 @@ import com.example.dhrumil.healthcare.MainActivity;
 import com.example.dhrumil.healthcare.R;
 import com.example.dhrumil.healthcare.dataBase.Database;
 import com.example.dhrumil.healthcare.dataBase.LoginCheck;
+import com.example.dhrumil.healthcare.dataBase.SharedPreference;
 import com.example.dhrumil.healthcare.dataBase.User;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity  implements RadioGroup.OnCh
     private Database db;
     private User user;
     private  String user_type;
-    private SharedPreferences preferences;
+    private SharedPreference preferences;
 
     public static String USER_TYPE = "USER_TYPE";
     public static String EMAIL_ID = "EMAIL_ID";
@@ -107,7 +107,7 @@ public class LoginActivity extends AppCompatActivity  implements RadioGroup.OnCh
 
     }
 
-    private void setSharedPreference(String userType,String username){
+   /* private void setSharedPreference(String userType,String username){
         preferences = getSharedPreferences("USER_INFO",MODE_PRIVATE);
         if(preferences != null)
         {
@@ -116,7 +116,8 @@ public class LoginActivity extends AppCompatActivity  implements RadioGroup.OnCh
             editor.putString("USER_NAME",username);
             editor.commit();
         }
-    }
+    }*/
+
     @Override
     public void onClick(View view) {
         Intent i;
@@ -128,11 +129,9 @@ public class LoginActivity extends AppCompatActivity  implements RadioGroup.OnCh
                     Toast.makeText(this,"select Doctor or Patient",Toast.LENGTH_LONG).show();
                 }
                 else {
-                    /*i = new Intent(LoginActivity.this, LoginContinueActivity.class);
-                    i.putExtra(USER_TYPE, user_type);
-                    startActivity(i);
-                    finish();*/
-                    setSharedPreference(user_type,edt_username_login.getText().toString());
+                    preferences = new SharedPreference(this,SharedPreference.USER_INFO);
+                   // preferences.setSharedPreference(SharedPreference.USER_TYPE,user_type);
+                    preferences.setSharedPreference(SharedPreference.USER_NAME,edt_username_login.getText().toString());
                     check();
                 }
                 break;
@@ -165,11 +164,8 @@ public class LoginActivity extends AppCompatActivity  implements RadioGroup.OnCh
             user.setusertype(user_type);
             db.addUser(user);
 
-            //Shared_pre sh = new Shared_pre(LoginActivity.this);
-            //sh.pa(user_type);
             Intent i = new Intent(LoginActivity.this, LoginContinueActivity.class);
             i.putExtra(USER_TYPE,user_type);
-            //i.putExtra(EMAIL_ID,edt_username_login.getText().toString());
             startActivity(i);
             finish();
         }

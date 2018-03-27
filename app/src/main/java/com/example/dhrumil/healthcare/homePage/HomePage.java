@@ -2,7 +2,7 @@ package com.example.dhrumil.healthcare.homePage;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -18,17 +18,26 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.dhrumil.healthcare.MainActivity;
 import com.example.dhrumil.healthcare.R;
+import com.example.dhrumil.healthcare.dataBase.SharedPreference;
+import com.example.dhrumil.healthcare.diet.DietPlan;
+import com.example.dhrumil.healthcare.fitness.FitnessRoutine;
 import com.example.dhrumil.healthcare.homePage.news.adapter.FeedAdapter;
 import com.example.dhrumil.healthcare.homePage.news.common.HttpDataHandler;
+import com.example.dhrumil.healthcare.homePage.news.common.NetworkStateReceiver;
 import com.example.dhrumil.healthcare.homePage.news.model.Articles;
+import com.example.dhrumil.healthcare.hospital.HospitalList;
+import com.example.dhrumil.healthcare.laboratory.LaboratoryList;
 import com.example.dhrumil.healthcare.login.LoginActivity;
+import com.example.dhrumil.healthcare.yoga.YogaRoutine;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,7 +48,8 @@ import java.util.ArrayList;
 
 import me.relex.circleindicator.CircleIndicator;
 
-public class HomePage extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener,NavigationView.OnNavigationItemSelectedListener {
+public class HomePage extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener,NavigationView.OnNavigationItemSelectedListener
+                                                            ,NetworkStateReceiver.NetworkStateReceiverListener{
 
     private String user_type;
     private DrawerLayout drawer_lay_home_page;
@@ -52,7 +62,7 @@ public class HomePage extends AppCompatActivity implements SwipeRefreshLayout.On
     private View rel_lay_nav_header;
     private ActionBarDrawerToggle drawerToggle;
     private static Context mContext;
-    private SharedPreferences preferences;
+    private SharedPreference preferences;
 
     //for news
     private RecyclerView rec_view_news_home;
@@ -70,8 +80,10 @@ public class HomePage extends AppCompatActivity implements SwipeRefreshLayout.On
     private ArrayList<Articles> data;
     private SwipeRefreshLayout swipe_lay_news;
     public final static String ON_BACK_PRESS = "ON_BACK_PRESS";
-    //private Handler handler;
-    //private Timer swipe;
+
+    private NetworkStateReceiver networkStateReceiver;
+    private ImageView img_view_no_internet;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,10 +93,6 @@ public class HomePage extends AppCompatActivity implements SwipeRefreshLayout.On
         register();
         getIntentData();
         setNavigationDrawer();
-
-        // setSlidePageListner();
-        //setTimerSlider();
-
     }
 
     private void inti() {
@@ -111,20 +119,29 @@ public class HomePage extends AppCompatActivity implements SwipeRefreshLayout.On
         linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         data = new ArrayList<Articles>();
         swipe_lay_news = (SwipeRefreshLayout) findViewById(R.id.swipe_lay_news);
-        // handler = new Handler();
-        //swipe = new Timer();
+        img_view_no_internet = (ImageView) findViewById(R.id.img_view_no_internet);
+        networkStateReceiver = new NetworkStateReceiver();
     }
 
     private void register() {
         rec_view_news_home.setLayoutManager(linearLayoutManager);
         nav_view_home_page.setNavigationItemSelectedListener(this);
         swipe_lay_news.setOnRefreshListener(this);
-        if (haveNetworkConnection())
-            loadNews();
-        else
-            Toast.makeText(this, "No Internet Connection", Toast.LENGTH_LONG).show();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        networkStateReceiver.addListener(this);
+        registerReceiver(networkStateReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        networkStateReceiver.removeListener(this);
+        unregisterReceiver(networkStateReceiver);
+    }
 
     private void getIntentData() {
         Intent i = getIntent();
@@ -141,7 +158,7 @@ public class HomePage extends AppCompatActivity implements SwipeRefreshLayout.On
             @Override
             protected void onPreExecute() {
 
-                rec_view_news_home.setVisibility(View.GONE);
+                super.onPreExecute();
             }
 
             @Override
@@ -158,7 +175,7 @@ public class HomePage extends AppCompatActivity implements SwipeRefreshLayout.On
                 try {
                     JSONObject jsonResponse = new JSONObject(result);
                     JSONArray articlesArray = jsonResponse.getJSONArray(KEY_ARTICLES);
-
+                    data.clear();
                     for (int i = 0; i < articlesArray.length(); i++) {
                         JSONObject objectArticle = articlesArray.getJSONObject(i);
                         articles = new Articles(objectArticle.optString(KEY_AUTHOR), objectArticle.optString(KEY_TITLE),
@@ -169,16 +186,12 @@ public class HomePage extends AppCompatActivity implements SwipeRefreshLayout.On
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                //rssObject = new Gson().fromJson(s,RssObject.class);
                 FeedAdapter adapter = new FeedAdapter(data, getBaseContext());
                 rec_view_news_home.setAdapter(adapter);
                 rec_view_news_home.setVisibility(View.VISIBLE);
                 adapter.notifyDataSetChanged();
             }
         };
-
-        //StringBuilder url_get_data = new StringBuilder(rss_to_json_api);
-        //url_get_data.append(rss_link);
         loadRssAsync.execute(get_data_url);
     }
 
@@ -188,12 +201,12 @@ public class HomePage extends AppCompatActivity implements SwipeRefreshLayout.On
         if (drawer_lay_home_page.isDrawerOpen(nav_view_home_page)) {
             drawer_lay_home_page.closeDrawer(nav_view_home_page);
         }
-        else if(!(user_type.equals(getResources().getString(R.string.patient))
+       /* else if(!(user_type.equals(getResources().getString(R.string.patient))
                 || user_type.equals(getResources().getString(R.string.doctor)))){
             Intent i = new Intent(this,MainActivity.class);
             startActivity(i);
             finish();
-        }
+        }*/
         else {
             super.onBackPressed();
         }
@@ -204,13 +217,7 @@ public class HomePage extends AppCompatActivity implements SwipeRefreshLayout.On
         if (drawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-        /*if (item.getItemId() == R.id.menu_refresh) {
-            if (haveNetworkConnection())
-                loadNews();
-            else
-                Toast.makeText(this, "No Internet Connection", Toast.LENGTH_LONG).show();
-            return true;
-        }*/
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -237,11 +244,11 @@ public class HomePage extends AppCompatActivity implements SwipeRefreshLayout.On
 
         //rel_lay_nav_header =  nav_view_home_page.getHeaderView(0);
         Menu menu = nav_view_home_page.getMenu();
-        MenuItem menuItem = menu.getItem(0).setChecked(true);
-
+        MenuItem menuItem = menu.getItem(0);
+        menuItem.setChecked(true);
     }
 
-    public static boolean haveNetworkConnection() {
+    private boolean haveNetworkConnection() {
         boolean haveConnectedWifi = false;
         boolean haveConnectedMobile = false;
 
@@ -257,68 +264,109 @@ public class HomePage extends AppCompatActivity implements SwipeRefreshLayout.On
         }
         return haveConnectedWifi || haveConnectedMobile;
     }
-
     @Override
     public void onRefresh() {
-        loadNews();
+        if(haveNetworkConnection()) {
+            img_view_no_internet.setVisibility(View.GONE);
+            rec_view_news_home.setVisibility(View.VISIBLE);
+            loadNews();
+        }
+        else
+        {
+            img_view_no_internet.setVisibility(View.VISIBLE);
+            rec_view_news_home.setVisibility(View.GONE);
+            Toast.makeText(this,"Couldn't refresh feed",Toast.LENGTH_SHORT).show();
+
+        }
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 swipe_lay_news.setRefreshing(false);
             }
-        },4000);
+        }, 4000);
+
     }
+
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Menu menu = nav_view_home_page.getMenu();
+        MenuItem menuItem = menu.getItem(0);
+        menuItem.setChecked(true);
+    }
+
 
     @Override
     public boolean onNavigationItemSelected( MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.nav_logout:
-                preferences = getSharedPreferences("USER_INFO",MODE_PRIVATE);
-                preferences.edit().clear().commit();
-                Intent  i = new Intent(HomePage.this,MainActivity.class);
-                startActivity(i);
+            case R.id.nav_news_feed:
+                item.setChecked(true);
+                drawer_lay_home_page.closeDrawer(nav_view_home_page);
+                Intent news = new Intent(HomePage.this,HomePage.class);
+                news.putExtra(LoginActivity.USER_TYPE,user_type);
+                startActivity(news);
                 finish();
-            }
+                break;
+            case R.id.nav_logout:
+                item.setChecked(true);
+                drawer_lay_home_page.closeDrawer(nav_view_home_page);
+                preferences = new SharedPreference(this,SharedPreference.USER_INFO);
+                preferences.clear();
+                Intent  logout = new Intent(HomePage.this,MainActivity.class);
+                startActivity(logout);
+                finish();
+                break;
+            case R.id.nav_hospital:
+                item.setChecked(true);
+                drawer_lay_home_page.closeDrawer(nav_view_home_page);
+                Intent hospital = new Intent(HomePage.this, HospitalList.class);
+                hospital.putExtra(LoginActivity.USER_TYPE,user_type);
+                startActivity(hospital);
+                break;
+            case R.id.nav_laboratory:
+                item.setChecked(true);
+                drawer_lay_home_page.closeDrawer(nav_view_home_page);
+                Intent laboratory = new Intent(HomePage.this,LaboratoryList.class);
+                laboratory.putExtra(LoginActivity.USER_TYPE,user_type);
+                startActivity(laboratory);
+                break;
+            case R.id.nav_diet:
+                item.setChecked(true);
+                drawer_lay_home_page.closeDrawer(nav_view_home_page);
+                Intent diet = new Intent(HomePage.this, DietPlan.class);
+                diet.putExtra(LoginActivity.USER_TYPE,user_type);
+                startActivity(diet);
+                break;
+            case R.id.nav_workout:
+                item.setChecked(true);
+                drawer_lay_home_page.closeDrawer(nav_view_home_page);
+                Intent workout = new Intent(HomePage.this, FitnessRoutine.class);
+                workout.putExtra(LoginActivity.USER_TYPE,user_type);
+                startActivity(workout);
+                break;
+            case R.id.nav_yago_meditation:
+                item.setChecked(true);
+                drawer_lay_home_page.closeDrawer(nav_view_home_page);
+                Intent yoga = new Intent(HomePage.this, YogaRoutine.class);
+                yoga.putExtra(LoginActivity.USER_TYPE,user_type);
+                startActivity(yoga);
+                break;
+        }
         return true;
     }
 
+    @Override
+    public void networkAvailable() {
+        img_view_no_internet.setVisibility(View.GONE);
+        rec_view_news_home.setVisibility(View.VISIBLE);
+        loadNews();
+    }
 
-    /*private void setSlidePageListner() {
-        view_pager_image_home_page.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-    }*/
-
-    /*private void setTimerSlider(){
-        swipe.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                  handler.post(new Runnable() {
-                      @Override
-                      public void run() {
-                          int currenPage = view_pager_image_home_page.getCurrentItem();
-                          if(currenPage == image.length)
-                          {
-                              currenPage = 0;
-                          }
-                          view_pager_image_home_page.setCurrentItem(currenPage++,true);
-
-                      }
-                  });
-            }
-        },1000,1000);
-    }*/
+    @Override
+    public void networkUnavailable() {
+        img_view_no_internet.setVisibility(View.VISIBLE);
+        rec_view_news_home.setVisibility(View.GONE);
+        Toast.makeText(this,"No Internet Connection",Toast.LENGTH_SHORT).show();
+    }
 }

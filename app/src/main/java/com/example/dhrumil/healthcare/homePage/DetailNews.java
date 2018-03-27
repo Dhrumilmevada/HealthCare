@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import com.example.dhrumil.healthcare.R;
@@ -14,10 +16,11 @@ import com.example.dhrumil.healthcare.homePage.news.adapter.FeedAdapter;
 
 public class DetailNews extends AppCompatActivity {
 
-    private Toolbar tool_bar_detail_news;
+//    private Toolbar tool_bar_detail_news;
     private WebView web_view_detail_news;
     private ProgressBar pro_bar_detail_news;
     private String url_link;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,16 +32,16 @@ public class DetailNews extends AppCompatActivity {
     }
 
     private void inti() {
-        tool_bar_detail_news = (Toolbar) findViewById(R.id.tool_bar_detail_news);
+//        tool_bar_detail_news = (Toolbar) findViewById(R.id.tool_bar_detail_news);
         web_view_detail_news = (WebView) findViewById(R.id.web_view_detail_news);
         pro_bar_detail_news = findViewById(R.id.pro_bar_detail_news);
     }
 
 
     private void register() {
-        tool_bar_detail_news.setTitle(getResources().getString(R.string.app_name));
+        /*tool_bar_detail_news.setTitle(getResources().getString(R.string.app_name));
         setSupportActionBar(tool_bar_detail_news);
-
+*/
     }
 
     private void getIntentData(){
@@ -46,8 +49,10 @@ public class DetailNews extends AppCompatActivity {
         url_link = detail.getStringExtra(FeedAdapter.URL_LINK);
     }
     private void setWebView(){
+        web_view_detail_news.setWebViewClient(new WebViewClient());
         web_view_detail_news.getSettings().setBuiltInZoomControls(true);
         web_view_detail_news.getSettings().setDisplayZoomControls(false);
+        web_view_detail_news.getSettings().setJavaScriptEnabled(true);
         web_view_detail_news.loadUrl(url_link);
         web_view_detail_news.setWebChromeClient(new WebChromeClient(){
             public void onProgressChanged(WebView webview , int progress){
@@ -64,4 +69,25 @@ public class DetailNews extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        if(web_view_detail_news.canGoBack())
+        {
+            web_view_detail_news.goBack();
+        }
+        else{
+            super.onBackPressed();
+        }
+
+    }
+    /*class MyBrowser extends WebViewClient{
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+            view.loadUrl(url_link);
+            return true;
+            //return super.shouldOverrideUrlLoading(view, request);
+        }
+    }*/
 }
+

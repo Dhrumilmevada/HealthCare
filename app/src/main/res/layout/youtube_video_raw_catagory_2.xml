@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/card_view_row_youtube_catogory_2"
+    android:padding="8dp"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="8dp"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="6dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/lin_lay_raw_catagory_2">
+
+       <de.hdodenhof.circleimageview.CircleImageView
+           android:layout_width="75dp"
+           android:layout_height="75dp"
+           android:id="@+id/cir_img_fitness"
+           android:src="@mipmap/ic_perm_identity_black_24dp"
+           app:civ_border_width="1dp"
+           app:civ_border_overlay="true"
+           app:civ_border_color="@color/white"
+           android:scaleType="centerCrop"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_fitness_title"
+            android:textSize="24sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="2dp"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+</android.support.v7.widget.CardView>

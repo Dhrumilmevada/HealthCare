@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rel_lay_youtube_thumbnail_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.dhrumil.healthcare.common.YoutubeThumbnailView">
+
+    <include
+        layout="@layout/reset_toolbar_layout"
+        android:id="@+id/tool_bar_youtube_thumbnail"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rec_view_youtube_thumbnail"
+        android:layout_below="@id/tool_bar_youtube_thumbnail">
+    </android.support.v7.widget.RecyclerView>
+</RelativeLayout>

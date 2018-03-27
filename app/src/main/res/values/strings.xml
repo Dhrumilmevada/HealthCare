@@ -63,7 +63,7 @@
 
     <string name="higher_colification">Higher Qualification</string>
 
-    <string name="pratice_as">Pratice As</string>
+    <string name="pratice_as">Practice As</string>
 
     <string name="date_of_birth">Date of birth</string>
 
@@ -80,26 +80,50 @@
     <string name="weight">Weight :-</string>
 
     <string name="kilo">Kg</string>
+
     <string name="news_fee">News feed</string>
+
     <string name="hospital">Hospital</string>
+
     <string name="laboratory">Laboratory</string>
+
     <string name="book_appointment">Book appointment</string>
+
     <string name="case_paper">Case paper</string>
+
     <string name="diet">Diet</string>
+
     <string name="work_out">Work out</string>
-    <string name="yoga_meditation"><![CDATA[Yaga & Meditation]]></string>
+
+    <string name="yoga_meditation">Yaga &amp; Meditation</string>
+
     <string name="logout">Logout</string>
+
     <string name="client">Client</string>
+
     <string name="appointment">Appointment</string>
+
     <string name="bookmark">Bookmark</string>
+
     <string name="naive">Naive</string>
+
     <string name="edit_profile">Edit Profile</string>
+
     <string name="close">close</string>
+
     <string name="open">open</string>
+
     <string name="title">Title</string>
+
     <string name="time">Time</string>
+
     <string name="content">Content</string>
+
     <string name="refresh">Refresh</string>
+
+    <string name="no_internet">No Internet</string>
+
+    <string name="youtube_video_thumbnail">Youtube Video Thumbnail</string>
 
     <string-array name="feets_scale">
         <item>1</item>
@@ -125,4 +149,5 @@
         <item>11</item>
         <item>12</item>
     </string-array>
+
 </resources>
