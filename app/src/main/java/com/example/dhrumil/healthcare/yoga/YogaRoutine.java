@@ -17,9 +17,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.dhrumil.healthcare.MainActivity;
 import com.example.dhrumil.healthcare.R;
+import com.example.dhrumil.healthcare.appointment.Appointment;
 import com.example.dhrumil.healthcare.common.Config;
 import com.example.dhrumil.healthcare.common.YoutubeData;
 import com.example.dhrumil.healthcare.common.YoutubePlayer;
@@ -29,6 +31,7 @@ import com.example.dhrumil.healthcare.common.listener.RecyclerViewOnClickListene
 import com.example.dhrumil.healthcare.common.model.YoutubeVideoListModel;
 import com.example.dhrumil.healthcare.dataBase.SharedPreference;
 import com.example.dhrumil.healthcare.diet.DietPlan;
+import com.example.dhrumil.healthcare.editProfile.EditProfile;
 import com.example.dhrumil.healthcare.fitness.FitnessRoutine;
 import com.example.dhrumil.healthcare.homePage.HomePage;
 import com.example.dhrumil.healthcare.hospital.HospitalList;
@@ -37,7 +40,9 @@ import com.example.dhrumil.healthcare.login.LoginActivity;
 
 import java.util.ArrayList;
 
-public class YogaRoutine extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class YogaRoutine extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener{
 
     private String user_type;
     private DrawerLayout drawer_lay_yoga;
@@ -51,6 +56,14 @@ public class YogaRoutine extends AppCompatActivity implements NavigationView.OnN
     private ActionBarDrawerToggle drawerToggle;
     private Context mContext;
     private SharedPreference preferences;
+    private View rel_lay_nav_header;
+    private CircleImageView circle_image_profile_nav_header;
+    private TextView txt_name_nav_header;
+    private TextView txt_email_nav_header;
+    private TextView txt_edit_profile_nav_header;
+
+    private TextView txt_signup_nav_header;
+    private TextView txt_login_nav_header;
 
 
     @Override
@@ -124,25 +137,45 @@ public class YogaRoutine extends AppCompatActivity implements NavigationView.OnN
         if (user_type.equals(getResources().getString(R.string.patient))) {
             nav_view_yoga.inflateMenu(R.menu.nav_menu_patient);
             nav_view_yoga.inflateHeaderView(R.layout.nav_header_view);
+
             menu = nav_view_yoga.getMenu();
             MenuItem menuItem = menu.getItem(7);
             menuItem.setChecked(true);
 
+            rel_lay_nav_header =  nav_view_yoga.getHeaderView(0);
+            txt_name_nav_header = (TextView) rel_lay_nav_header.findViewById(R.id.txt_name_nav_header);
+            txt_email_nav_header = (TextView)rel_lay_nav_header.findViewById(R.id.txt_email_nav_header);
+            txt_edit_profile_nav_header = (TextView)rel_lay_nav_header.findViewById(R.id.txt_edit_profile_nav_header);
+            circle_image_profile_nav_header = (CircleImageView) rel_lay_nav_header.findViewById(R.id.circle_image_profile_nav_header);
+            txt_edit_profile_nav_header.setOnClickListener(this);
+
         } else if (user_type.equals(getResources().getString(R.string.doctor))) {
             nav_view_yoga.inflateMenu(R.menu.nav_menu_doctor);
             nav_view_yoga.inflateHeaderView(R.layout.nav_header_view);
+
             menu = nav_view_yoga.getMenu();
             MenuItem menuItem = menu.getItem(8);
             menuItem.setChecked(true);
-        } else {
+
+            rel_lay_nav_header =  nav_view_yoga.getHeaderView(0);
+            txt_name_nav_header = (TextView) rel_lay_nav_header.findViewById(R.id.txt_name_nav_header);
+            txt_email_nav_header = (TextView)rel_lay_nav_header.findViewById(R.id.txt_email_nav_header);
+            txt_edit_profile_nav_header = (TextView)rel_lay_nav_header.findViewById(R.id.txt_edit_profile_nav_header);
+            circle_image_profile_nav_header = (CircleImageView) rel_lay_nav_header.findViewById(R.id.circle_image_profile_nav_header);
+            txt_edit_profile_nav_header.setOnClickListener(this);
+        }
+        else {
             nav_view_yoga.inflateMenu(R.menu.nav_menu_naive);
             nav_view_yoga.inflateHeaderView(R.layout.nav_header_naive);
             menu = nav_view_yoga.getMenu();
             MenuItem menuItem = menu.getItem(5);
             menuItem.setChecked(true);
+            rel_lay_nav_header = nav_view_yoga.getHeaderView(0);
+            txt_signup_nav_header = rel_lay_nav_header.findViewById(R.id.txt_signup_nav_header);
+            txt_login_nav_header = rel_lay_nav_header.findViewById(R.id.txt_login_nav_header);
+            txt_login_nav_header.setOnClickListener(this);
+            txt_signup_nav_header.setOnClickListener(this);
         }
-        //rel_lay_nav_header =  nav_view_home_page.getHeaderView(0);
-
     }
 
     @Override
@@ -250,6 +283,13 @@ public class YogaRoutine extends AppCompatActivity implements NavigationView.OnN
                 startActivity(yoga);
                 finish();
                 break;
+            case R.id.nav_book_appointment:
+                item.setChecked(true);
+                drawer_lay_yoga.closeDrawer(nav_view_yoga);
+                Intent book = new Intent(YogaRoutine.this,Appointment.class);
+                book.putExtra(LoginActivity.USER_TYPE,user_type);
+                startActivity(book);
+                break;
         }
         return true;
     }
@@ -264,6 +304,28 @@ public class YogaRoutine extends AppCompatActivity implements NavigationView.OnN
         for(int i =0; i < video_id.length ; i++) {
             YoutubeVideoListModel youtubeVideoListModel = new YoutubeVideoListModel(video_id[i],video_title[i],video_duration[i]);
             videoList.add(youtubeVideoListModel);
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.txt_login_nav_header:
+                Intent main = new Intent(YogaRoutine.this,MainActivity.class);
+                drawer_lay_yoga.closeDrawer(nav_view_yoga);
+                startActivity(main);
+                break;
+            case R.id.txt_signup_nav_header:
+                Intent signup = new Intent(YogaRoutine.this,LoginActivity.class);
+                drawer_lay_yoga.closeDrawer(nav_view_yoga);
+                startActivity(signup);
+                break;
+            case R.id.txt_edit_profile_nav_header:
+                Intent edit = new Intent(YogaRoutine.this, EditProfile.class);
+                edit.putExtra(LoginActivity.USER_TYPE,user_type);
+                drawer_lay_yoga.closeDrawer(nav_view_yoga);
+                startActivity(edit);
+                break;
         }
     }
 }

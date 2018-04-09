@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rel_lay_edit_profile"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.dhrumil.healthcare.editProfile.EditProfile">
+
+    <include
+        layout="@layout/reset_toolbar_layout"
+        android:id="@+id/tool_bar_edit_profile"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/frame_lay_edit_profile"
+        android:layout_below="@id/tool_bar_edit_profile"/>
+</RelativeLayout>

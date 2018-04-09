@@ -16,14 +16,18 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.dhrumil.healthcare.MainActivity;
 import com.example.dhrumil.healthcare.R;
+import com.example.dhrumil.healthcare.appointment.Appointment;
 import com.example.dhrumil.healthcare.common.YoutubeData;
 import com.example.dhrumil.healthcare.dataBase.Database;
 import com.example.dhrumil.healthcare.dataBase.SharedPreference;
 import com.example.dhrumil.healthcare.diet.adapter.YoutubeCatagoryAdapter;
 import com.example.dhrumil.healthcare.diet.model.YoutubeCatagoryModel;
+import com.example.dhrumil.healthcare.editProfile.EditProfile;
 import com.example.dhrumil.healthcare.fitness.FitnessRoutine;
 import com.example.dhrumil.healthcare.homePage.HomePage;
 import com.example.dhrumil.healthcare.hospital.HospitalList;
@@ -33,7 +37,9 @@ import com.example.dhrumil.healthcare.yoga.YogaRoutine;
 
 import java.util.ArrayList;
 
-public class DietPlan extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class DietPlan extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener{
 
     private String user_type;
     private DrawerLayout drawer_lay_diet;
@@ -46,6 +52,14 @@ public class DietPlan extends AppCompatActivity implements NavigationView.OnNavi
     private ActionBarDrawerToggle drawerToggle;
     private Context mContext;
     private SharedPreference preferences;
+    private View rel_lay_nav_header;
+    private CircleImageView circle_image_profile_nav_header;
+    private TextView txt_name_nav_header;
+    private TextView txt_email_nav_header;
+    private TextView txt_edit_profile_nav_header;
+
+    private TextView txt_signup_nav_header;
+    private TextView txt_login_nav_header;
     private Database db;
     private YoutubeData youtubeData;
 
@@ -55,9 +69,17 @@ public class DietPlan extends AppCompatActivity implements NavigationView.OnNavi
         setContentView(R.layout.activity_diet_plan);
         getIntentData();
         inti();
-        user_type = db.getUsertype();
         register();
         setNavigationDrawer();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
 
     private void inti() {
@@ -117,20 +139,40 @@ public class DietPlan extends AppCompatActivity implements NavigationView.OnNavi
             MenuItem menuItem = menu.getItem(5);
             menuItem.setChecked(true);
 
+            rel_lay_nav_header =  nav_view_diet.getHeaderView(0);
+            txt_name_nav_header = (TextView) rel_lay_nav_header.findViewById(R.id.txt_name_nav_header);
+            txt_email_nav_header = (TextView)rel_lay_nav_header.findViewById(R.id.txt_email_nav_header);
+            txt_edit_profile_nav_header = (TextView)rel_lay_nav_header.findViewById(R.id.txt_edit_profile_nav_header);
+            circle_image_profile_nav_header = (CircleImageView) rel_lay_nav_header.findViewById(R.id.circle_image_profile_nav_header);
+            txt_edit_profile_nav_header.setOnClickListener(this);
+
         } else if (user_type.equals(getResources().getString(R.string.doctor))) {
             nav_view_diet.inflateMenu(R.menu.nav_menu_doctor);
             nav_view_diet.inflateHeaderView(R.layout.nav_header_view);
             menu = nav_view_diet.getMenu();
             MenuItem menuItem = menu.getItem(6);
             menuItem.setChecked(true);
-        } else {
+
+            rel_lay_nav_header =  nav_view_diet.getHeaderView(0);
+            txt_name_nav_header = (TextView) rel_lay_nav_header.findViewById(R.id.txt_name_nav_header);
+            txt_email_nav_header = (TextView)rel_lay_nav_header.findViewById(R.id.txt_email_nav_header);
+            txt_edit_profile_nav_header = (TextView)rel_lay_nav_header.findViewById(R.id.txt_edit_profile_nav_header);
+            circle_image_profile_nav_header = (CircleImageView) rel_lay_nav_header.findViewById(R.id.circle_image_profile_nav_header);
+            txt_edit_profile_nav_header.setOnClickListener(this);
+        }
+        else {
             nav_view_diet.inflateMenu(R.menu.nav_menu_naive);
             nav_view_diet.inflateHeaderView(R.layout.nav_header_naive);
             menu = nav_view_diet.getMenu();
             MenuItem menuItem = menu.getItem(3);
             menuItem.setChecked(true);
+            rel_lay_nav_header = nav_view_diet.getHeaderView(0);
+            txt_signup_nav_header = rel_lay_nav_header.findViewById(R.id.txt_signup_nav_header);
+            txt_login_nav_header = rel_lay_nav_header.findViewById(R.id.txt_login_nav_header);
+            txt_login_nav_header.setOnClickListener(this);
+            txt_signup_nav_header.setOnClickListener(this);
         }
-        //rel_lay_nav_header =  nav_view_home_page.getHeaderView(0);
+
 
     }
 
@@ -238,6 +280,13 @@ public class DietPlan extends AppCompatActivity implements NavigationView.OnNavi
                 yoga.putExtra(LoginActivity.USER_TYPE,user_type);
                 startActivity(yoga);
                 break;
+            case R.id.nav_book_appointment:
+                item.setChecked(true);
+                drawer_lay_diet.closeDrawer(nav_view_diet);
+                Intent book = new Intent(DietPlan.this,Appointment.class);
+                book.putExtra(LoginActivity.USER_TYPE,user_type);
+                startActivity(book);
+                break;
         }
         return true;
     }
@@ -251,6 +300,28 @@ public class DietPlan extends AppCompatActivity implements NavigationView.OnNavi
         {
             YoutubeCatagoryModel youtubeCatagoryModel = new YoutubeCatagoryModel(title[i],desc[i],img[i]);
             catagoryList.add(youtubeCatagoryModel);
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.txt_login_nav_header:
+                Intent main = new Intent(DietPlan.this,MainActivity.class);
+                drawer_lay_diet.closeDrawer(nav_view_diet);
+                startActivity(main);
+                break;
+            case R.id.txt_signup_nav_header:
+                Intent signup = new Intent(DietPlan.this,LoginActivity.class);
+                drawer_lay_diet.closeDrawer(nav_view_diet);
+                startActivity(signup);
+                break;
+            case R.id.txt_edit_profile_nav_header:
+                Intent edit = new Intent(DietPlan.this, EditProfile.class);
+                edit.putExtra(LoginActivity.USER_TYPE,user_type);
+                drawer_lay_diet.closeDrawer(nav_view_diet);
+                startActivity(edit);
+                break;
         }
     }
 }

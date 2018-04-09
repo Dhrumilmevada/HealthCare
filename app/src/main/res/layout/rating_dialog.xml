@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/img_view_rate_1_rate_dialog"
+        android:src="@drawable/ic_star_border_black"
+        android:contentDescription="@string/rate"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="15dp"
+        android:clickable="true"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/img_view_rate_2_rate_dialog"
+        android:src="@drawable/ic_star_border_black"
+        android:contentDescription="@string/rate"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="15dp"
+        android:clickable="true"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/img_view_rate_3_rate_dialog"
+        android:src="@drawable/ic_star_border_black"
+        android:contentDescription="@string/rate"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="15dp"
+        android:clickable="true"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/img_view_rate_4_rate_dialog"
+        android:src="@drawable/ic_star_border_black"
+        android:contentDescription="@string/rate"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="15dp"
+        android:clickable="true"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/img_view_rate_5_rate_dialog"
+        android:src="@drawable/ic_star_border_black"
+        android:contentDescription="@string/rate"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="15dp"
+        android:clickable="true"/>
+
+</LinearLayout>

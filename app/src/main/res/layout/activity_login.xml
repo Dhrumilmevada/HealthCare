@@ -112,12 +112,14 @@
                     android:id="@+id/rdo_btn_patient"
                     android:text="@string/patient"
                     android:layout_marginEnd="10dp"
+                    android:textSize="18sp"
                     />
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/rdo_btn_doctor"
-                    android:text="@string/doctor"/>
+                    android:text="@string/doctor"
+                    android:textSize="18sp"/>
             </RadioGroup>
             <TextView
                 android:layout_width="match_parent"

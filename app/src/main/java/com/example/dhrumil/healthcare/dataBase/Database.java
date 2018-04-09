@@ -11,8 +11,8 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class Database extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "Health.db";
-    private static final int DATA_VERSION = 1;
+    private static final String DATABASE_NAME = "HealthCare.db";
+    private static final int DATA_VERSION = 2;
     private static final String EMAIL_ID = "email_id";
     private static final String KEY_ID = "id";
     private static final String KEY_PASS = "password";
@@ -34,6 +34,7 @@ public class Database extends SQLiteOpenHelper {
     private static final String USER_TYPE = "user_type";
 
     public Database(Context context) {
+
         super(context,DATABASE_NAME,null,DATA_VERSION);
     }
 
@@ -57,22 +58,24 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + LOGIN_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + PATIENT_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + DOCTOR_TABLE);
-        if(i < 2) {
+        if(i < i1) {
             db.execSQL("ALTER TABLE " +LOGIN_TABLE+ " ADD COLUMN" + USER_TYPE + "TEXT");
         }
-            onCreate(db);
+
+        onCreate(db);
+
     }
 
     public void addUser(User user){
 
         SQLiteDatabase db = this.getWritableDatabase();
-
         ContentValues values = new ContentValues();
         values.put(EMAIL_ID, user.getEmail());
         values.put(KEY_PASS, user.getPassword());
         values.put(KEY_NAME, user.getName());
         values.put(USER_TYPE, user.getusertype());
         db.insert(LOGIN_TABLE, null, values);
+
         db.close();
     }
 

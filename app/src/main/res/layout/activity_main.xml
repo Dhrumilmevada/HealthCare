@@ -15,7 +15,7 @@
         android:layout_height="100dp"
         android:id="@+id/imgv_app_logo"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         android:src="@drawable/logo"
         android:contentDescription="@string/app_logo"/>
     <EditText
@@ -81,8 +81,18 @@
             android:layout_marginTop="5dp"
             android:clickable="true"
         />
-    <include
 
+    <com.google.android.gms.common.SignInButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/google_signin"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/txt_forgot_password">
+    </com.google.android.gms.common.SignInButton>
+
+    <include
         layout="@layout/footer_text"
         android:id="@+id/rel_lay_footer_text"
         />

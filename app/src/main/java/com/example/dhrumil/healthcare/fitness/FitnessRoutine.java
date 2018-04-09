@@ -16,13 +16,17 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.dhrumil.healthcare.MainActivity;
 import com.example.dhrumil.healthcare.R;
+import com.example.dhrumil.healthcare.appointment.Appointment;
 import com.example.dhrumil.healthcare.common.YoutubeData;
 import com.example.dhrumil.healthcare.dataBase.Database;
 import com.example.dhrumil.healthcare.dataBase.SharedPreference;
 import com.example.dhrumil.healthcare.diet.DietPlan;
+import com.example.dhrumil.healthcare.editProfile.EditProfile;
 import com.example.dhrumil.healthcare.fitness.adapter.YoutubeCatagoryAdapter;
 import com.example.dhrumil.healthcare.fitness.model.YoutubeCatagoryModel;
 import com.example.dhrumil.healthcare.homePage.HomePage;
@@ -33,7 +37,9 @@ import com.example.dhrumil.healthcare.yoga.YogaRoutine;
 
 import java.util.ArrayList;
 
-public class FitnessRoutine extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class FitnessRoutine extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener{
 
     private String user_type;
     private DrawerLayout drawer_lay_fitness;
@@ -47,6 +53,14 @@ public class FitnessRoutine extends AppCompatActivity implements NavigationView.
     private YoutubeData youtubeData;
     private ArrayList<YoutubeCatagoryModel> catagoryList;
     private YoutubeCatagoryAdapter youtubeCatagoryAdapter;
+    private View rel_lay_nav_header;
+    private CircleImageView circle_image_profile_nav_header;
+    private TextView txt_name_nav_header;
+    private TextView txt_email_nav_header;
+    private TextView txt_edit_profile_nav_header;
+
+    private TextView txt_signup_nav_header;
+    private TextView txt_login_nav_header;
     private Database db;
 
     @Override
@@ -55,10 +69,21 @@ public class FitnessRoutine extends AppCompatActivity implements NavigationView.
         setContentView(R.layout.activity_fitness_routine);
         getIntentData();
         inti();
-        user_type = db.getUsertype();
         register();
         setNavigationDrawer();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+
 
     private void inti() {
         drawer_lay_fitness = (DrawerLayout) findViewById(R.id.drawer_lay_fitness);
@@ -113,24 +138,46 @@ public class FitnessRoutine extends AppCompatActivity implements NavigationView.
         if (user_type.equals(getResources().getString(R.string.patient))) {
             nav_view_fitness.inflateMenu(R.menu.nav_menu_patient);
             nav_view_fitness.inflateHeaderView(R.layout.nav_header_view);
+
             menu = nav_view_fitness.getMenu();
             MenuItem menuItem = menu.getItem(6);
             menuItem.setChecked(true);
 
+            rel_lay_nav_header =  nav_view_fitness.getHeaderView(0);
+            txt_name_nav_header = (TextView) rel_lay_nav_header.findViewById(R.id.txt_name_nav_header);
+            txt_email_nav_header = (TextView)rel_lay_nav_header.findViewById(R.id.txt_email_nav_header);
+            txt_edit_profile_nav_header = (TextView)rel_lay_nav_header.findViewById(R.id.txt_edit_profile_nav_header);
+            circle_image_profile_nav_header = (CircleImageView) rel_lay_nav_header.findViewById(R.id.circle_image_profile_nav_header);
+            txt_edit_profile_nav_header.setOnClickListener(this);
+
         } else if (user_type.equals(getResources().getString(R.string.doctor))) {
             nav_view_fitness.inflateMenu(R.menu.nav_menu_doctor);
             nav_view_fitness.inflateHeaderView(R.layout.nav_header_view);
+
             menu = nav_view_fitness.getMenu();
             MenuItem menuItem = menu.getItem(7);
             menuItem.setChecked(true);
-        } else {
+
+            rel_lay_nav_header =  nav_view_fitness.getHeaderView(0);
+            txt_name_nav_header = (TextView) rel_lay_nav_header.findViewById(R.id.txt_name_nav_header);
+            txt_email_nav_header = (TextView)rel_lay_nav_header.findViewById(R.id.txt_email_nav_header);
+            txt_edit_profile_nav_header = (TextView)rel_lay_nav_header.findViewById(R.id.txt_edit_profile_nav_header);
+            circle_image_profile_nav_header = (CircleImageView) rel_lay_nav_header.findViewById(R.id.circle_image_profile_nav_header);
+            txt_edit_profile_nav_header.setOnClickListener(this);
+        }
+        else {
             nav_view_fitness.inflateMenu(R.menu.nav_menu_naive);
             nav_view_fitness.inflateHeaderView(R.layout.nav_header_naive);
             menu = nav_view_fitness.getMenu();
             MenuItem menuItem = menu.getItem(4);
             menuItem.setChecked(true);
+            rel_lay_nav_header = nav_view_fitness.getHeaderView(0);
+            txt_signup_nav_header = rel_lay_nav_header.findViewById(R.id.txt_signup_nav_header);
+            txt_login_nav_header = rel_lay_nav_header.findViewById(R.id.txt_login_nav_header);
+            txt_login_nav_header.setOnClickListener(this);
+            txt_signup_nav_header.setOnClickListener(this);
         }
-        //rel_lay_nav_header =  nav_view_home_page.getHeaderView(0);
+
 
     }
 
@@ -238,6 +285,13 @@ public class FitnessRoutine extends AppCompatActivity implements NavigationView.
                 yoga.putExtra(LoginActivity.USER_TYPE,user_type);
                 startActivity(yoga);
                 break;
+            case R.id.nav_book_appointment:
+                item.setChecked(true);
+                drawer_lay_fitness.closeDrawer(nav_view_fitness);
+                Intent book = new Intent(FitnessRoutine.this,Appointment.class);
+                book.putExtra(LoginActivity.USER_TYPE,user_type);
+                startActivity(book);
+                break;
         }
         return true;
     }
@@ -250,6 +304,28 @@ public class FitnessRoutine extends AppCompatActivity implements NavigationView.
         {
             YoutubeCatagoryModel youtubeCatagoryModel = new YoutubeCatagoryModel(img[i],title[i]);
             catagoryList.add(youtubeCatagoryModel);
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.txt_login_nav_header:
+                Intent main = new Intent(FitnessRoutine.this,MainActivity.class);
+                drawer_lay_fitness.closeDrawer(nav_view_fitness);
+                startActivity(main);
+                break;
+            case R.id.txt_signup_nav_header:
+                Intent signup = new Intent(FitnessRoutine.this,LoginActivity.class);
+                drawer_lay_fitness.closeDrawer(nav_view_fitness);
+                startActivity(signup);
+                break;
+            case R.id.txt_edit_profile_nav_header:
+                Intent edit = new Intent(FitnessRoutine.this, EditProfile.class);
+                edit.putExtra(LoginActivity.USER_TYPE,user_type);
+                drawer_lay_fitness.closeDrawer(nav_view_fitness);
+                startActivity(edit);
+                break;
         }
     }
 }

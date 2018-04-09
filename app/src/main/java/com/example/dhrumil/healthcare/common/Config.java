@@ -11,4 +11,5 @@ public class Config {
     public static final String FITNESS_TITLE = "FITNESS_TITLE";
     public static final String VIDEO_ID = "VIDEO_ID";
     public static final String POSITION = "POSITION";
+    public static final int REQUEST_LOCATION = 1;
 }

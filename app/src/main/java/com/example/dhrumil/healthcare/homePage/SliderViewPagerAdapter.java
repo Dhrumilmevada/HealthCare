@@ -28,12 +28,14 @@ public class SliderViewPagerAdapter extends PagerAdapter {
     private Context context;
     private int image[];
     private LayoutInflater layoutInflater;
+    private String userType;
 
-    public SliderViewPagerAdapter(Context context,int [] image) {
+    public SliderViewPagerAdapter(Context context,int [] image,String userType) {
         this.context = context;
         this.image = image;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         db = new Database(context);
+        this.userType = userType;
     }
 
     @Override
@@ -64,29 +66,29 @@ public class SliderViewPagerAdapter extends PagerAdapter {
                 Intent i;
                 switch(pos)
                 {
-                    case 0:
+                    /*case 0:
                         i = new Intent(con, HospitalList.class);
-                        i.putExtra(LoginActivity.USER_TYPE,db.getUsertype());
+                        i.putExtra(LoginActivity.USER_TYPE,userType);
                         con.startActivity(i);
                         break;
                     case 1:
                         i = new Intent(con, LaboratoryList.class);
-                        i.putExtra(LoginActivity.USER_TYPE,db.getUsertype());
+                        i.putExtra(LoginActivity.USER_TYPE,userType);
+                        con.startActivity(i);
+                        break;*/
+                    case 0:
+                        i = new Intent(con, DietPlan.class);
+                        i.putExtra(LoginActivity.USER_TYPE,userType);
+                        con.startActivity(i);
+                        break;
+                    case 1:
+                        i = new Intent(con, FitnessRoutine.class);
+                        i.putExtra(LoginActivity.USER_TYPE,userType);
                         con.startActivity(i);
                         break;
                     case 2:
-                        i = new Intent(con, DietPlan.class);
-                        i.putExtra(LoginActivity.USER_TYPE,db.getUsertype());
-                        con.startActivity(i);
-                        break;
-                    case 3:
-                        i = new Intent(con, FitnessRoutine.class);
-                        i.putExtra(LoginActivity.USER_TYPE,db.getUsertype());
-                        con.startActivity(i);
-                        break;
-                    case 4:
                         i = new Intent(con, YogaRoutine.class);
-                        i.putExtra(LoginActivity.USER_TYPE,db.getUsertype());
+                        i.putExtra(LoginActivity.USER_TYPE,userType);
                         con.startActivity(i);
                         break;
                 }

@@ -19,6 +19,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     private ArrayList<Fragment> view_pager_content = new ArrayList<>();
     private ArrayList<String> tab_title = new ArrayList<>();
     private FragmentManager fm;
+
     public ViewPagerAdapter(FragmentManager fm) {
         super(fm);
         this.fm = fm;
@@ -46,8 +47,4 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         return tab_title.get(position);
     }
 
-    @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        return super.instantiateItem(container, position);
-    }
 }

@@ -13,6 +13,7 @@ import com.example.dhrumil.healthcare.common.Config;
 import com.example.dhrumil.healthcare.common.YoutubeThumbnailView;
 import com.example.dhrumil.healthcare.diet.model.YoutubeCatagoryModel;
 import com.example.dhrumil.healthcare.homePage.news.interFace.ItemClickListener;
+import com.example.dhrumil.healthcare.login.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.zip.Inflater;

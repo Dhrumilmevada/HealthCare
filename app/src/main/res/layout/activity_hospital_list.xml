@@ -16,6 +16,12 @@
             layout="@layout/reset_toolbar_layout"
             android:id="@+id/tool_bar_hospital">
         </include>
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rec_view_hospital_list"
+            android:layout_below="@id/tool_bar_hospital">
+        </android.support.v7.widget.RecyclerView>
 
     </RelativeLayout>
 

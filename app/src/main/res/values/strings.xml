@@ -125,6 +125,52 @@
 
     <string name="youtube_video_thumbnail">Youtube Video Thumbnail</string>
 
+    <string name="male">Male</string>
+
+    <string name="female">Female</string>
+
+    <string name="past_disease">Any past diseases that you suffered from...</string>
+    <string name="ok">Ok</string>
+
+    <string name="speciality">Speciality</string>
+
+    <string name="exprience">Exprience</string>
+
+    <string name="doctor_time">Doctor Available :-</string>
+
+    <string name="in_morning">In moring :</string>
+
+    <string name="to">To</string>
+
+    <string name="from">From</string>
+
+    <string name="dash">-</string>
+
+    <string name="in_evening">In evening</string>
+
+    <string name="hos_detail">Hospital detail :-</string>
+
+    <string name="hos_name">Hospital Name</string>
+
+    <string name="hos_address">Hoapital Address</string>
+
+    <string name="open_hours">Open Hours :</string>
+
+    <string name="close_at">Close at</string>
+
+    <string name="open_at">Open at</string>
+
+    <string name="distance">Distance</string>
+
+    <string name="hospital_name">Hospital Name</string>
+
+    <string name="rate">Rate</string>
+
+    <string name="rating">3.0</string>
+
+    <string name="gmap">Gmap Link</string>
+    <string name="give_rate">Rated this hospital? Rate Now!</string>
+
     <string-array name="feets_scale">
         <item>1</item>
         <item>2</item>

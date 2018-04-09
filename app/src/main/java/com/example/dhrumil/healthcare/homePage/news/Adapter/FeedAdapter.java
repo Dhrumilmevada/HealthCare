@@ -38,9 +38,6 @@ class FeedViewHolder extends RecyclerView.ViewHolder implements View.OnClickList
 
     private ItemClickListener itemClickListener;
 
-    public void setItemClickListener(ItemClickListener itemClickListener) {
-        this.itemClickListener = itemClickListener;
-    }
 
     public FeedViewHolder(View itemView) {
         super(itemView);
@@ -51,6 +48,10 @@ class FeedViewHolder extends RecyclerView.ViewHolder implements View.OnClickList
 
         itemView.setOnClickListener(this);
     }
+    public void setItemClickListener(ItemClickListener itemClickListener) {
+        this.itemClickListener = itemClickListener;
+    }
+
 
     @Override
     public void onClick(View view) {

@@ -1,17 +1,20 @@
 package com.example.dhrumil.healthcare.common;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.example.dhrumil.healthcare.R;
 import com.example.dhrumil.healthcare.common.adapter.YoutubeVideoListAdapter;
 import com.example.dhrumil.healthcare.common.listener.RecyclerViewOnClickListener;
 import com.example.dhrumil.healthcare.common.model.YoutubeVideoListModel;
+import com.example.dhrumil.healthcare.login.LoginActivity;
 
 import java.util.ArrayList;
 
@@ -25,6 +28,7 @@ public class YoutubeThumbnailView extends AppCompatActivity {
     private String fitness_title;
     private YoutubeData youtubeData;
     private ArrayList<YoutubeVideoListModel> videoList;
+    private String userType;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +53,8 @@ public class YoutubeThumbnailView extends AppCompatActivity {
         Intent i = getIntent();
         diet_title = i.getStringExtra(Config.DIET_TITLE);
         fitness_title = i.getStringExtra(Config.FITNESS_TITLE);
+
+
     }
 
     private void register()
@@ -147,5 +153,15 @@ public class YoutubeThumbnailView extends AppCompatActivity {
             YoutubeVideoListModel youtubeVideoListModel = new YoutubeVideoListModel(video_id[i],video_title[i],video_duration[i]);
             videoList.add(youtubeVideoListModel);
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

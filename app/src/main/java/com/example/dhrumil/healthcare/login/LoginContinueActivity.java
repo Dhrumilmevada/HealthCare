@@ -26,6 +26,9 @@ public class LoginContinueActivity extends AppCompatActivity implements OnClickI
     private FrameLayout frame_lay_login_continue;
     private String userType;
     private FragmentManager fm;
+    private String name;
+    private String email;
+    private String uri1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -66,6 +69,9 @@ public class LoginContinueActivity extends AppCompatActivity implements OnClickI
     public void getIntentData() {
         Intent i = getIntent();
         userType = i.getStringExtra(LoginActivity.USER_TYPE);
+        name = i.getStringExtra(LoginActivity.NAME);
+        uri1 = i.getStringExtra(LoginActivity.URI1);
+        email = i.getStringExtra(LoginActivity.EMAIL_ID);
        // emailid = i.getStringExtra(LoginActivity.EMAIL_ID);
     }
     @Override
@@ -77,6 +83,9 @@ public class LoginContinueActivity extends AppCompatActivity implements OnClickI
     public void onClickButton(Class cls) {
         Intent i = new Intent(LoginContinueActivity.this,cls);
         i.putExtra(LoginActivity.USER_TYPE,userType);
+        i.putExtra(LoginActivity.NAME,name);
+        i.putExtra(LoginActivity.EMAIL_ID,email);
+        i.putExtra(LoginActivity.URI1,uri1);
         startActivity(i);
         finish();
     }

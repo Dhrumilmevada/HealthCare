@@ -9,12 +9,16 @@
     <item
         android:id="@+id/nav_hospital"
         android:title="@string/hospital"
-        android:checkable="true">
+        android:checkable="true"
+        android:enabled="false"
+        android:visible="false">
     </item>
     <item
         android:id="@+id/nav_laboratory"
         android:title="@string/laboratory"
-        android:checkable="true">
+        android:checkable="true"
+        android:enabled="false"
+        android:visible="false">
     </item>
     <item
         android:id="@+id/nav_diet"

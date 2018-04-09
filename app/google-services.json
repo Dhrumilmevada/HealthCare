@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "764043240617",
+    "firebase_url": "https://healthcare-6f629.firebaseio.com",
+    "project_id": "healthcare-6f629",
+    "storage_bucket": "healthcare-6f629.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:764043240617:android:603894e755b50fdf",
+        "android_client_info": {
+          "package_name": "com.example.dhrumil.healthcare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "764043240617-2eomdet6qdjtkpi0tdo9qkun61m55kgl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dhrumil.healthcare",
+            "certificate_hash": "e1a178d40bb744321ac7e00e226a0418670470bf"
+          }
+        },
+        {
+          "client_id": "764043240617-04nmccdjk67r1v95hnmcn1e5nc6937fa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDf4gHKO0dujQMggdgnEmzvi03Y19psWdE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "764043240617-04nmccdjk67r1v95hnmcn1e5nc6937fa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
