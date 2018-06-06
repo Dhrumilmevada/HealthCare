@@ -46,15 +46,11 @@ public class ResetPassword extends AppCompatActivity implements OnClickInFragmen
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager()/*,view_pager_reset_password*/);
 
     }
-
     @Override
     public void onClickButton() {
         Intent i =new Intent(ResetPassword.this,ResetPasswordContinue.class);
         startActivity(i);
-
-
     }
-
     @Override
     public void onClickButton(Class cls) {
 

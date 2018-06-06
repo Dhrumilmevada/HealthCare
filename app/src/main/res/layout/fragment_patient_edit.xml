@@ -36,6 +36,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:id="@+id/rel_lay_patient_edit_bottom"
             >
 
@@ -43,13 +44,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/edt_name_patient_edit"
-                android:layout_marginTop="10dp"
+                android:textSize="22sp"
                 android:hint="@string/name"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/edt_phone_patient_edit"
                 android:layout_below="@id/edt_name_patient_edit"
+                android:textSize="22sp"
+                android:layout_marginTop="5dp"
                 android:hint="@string/phone_no"
                 android:inputType="phone"
                 />
@@ -59,12 +62,16 @@
                 android:id="@+id/txt_date_of_birth_patient_edit"
                 android:hint="@string/date_of_birth"
                 android:layout_below="@id/edt_phone_patient_edit"
-                android:textSize="18sp"
-                android:clickable="true"/>
+                android:clickable="true"
+                android:textSize="22sp"
+                android:layout_marginTop="5dp"
+                android:padding="3dp"
+                />
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/rdo_grp_gender"
+                android:layout_marginTop="5dp"
                 android:layout_below="@id/txt_date_of_birth_patient_edit"
                 android:orientation="horizontal">
                 <RadioButton
@@ -73,19 +80,21 @@
                     android:id="@+id/rdo_btn_male"
                     android:text="@string/male"
                     android:layout_marginEnd="10dp"
-                    android:textSize="18sp"/>
+                    android:textSize="22sp"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/rdo_btn_female"
                     android:text="@string/female"
-                    android:textSize="18sp"/>
+                    android:textSize="22sp"/>
             </RadioGroup>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/edt_address_patient_edit"
                 android:hint="@string/address"
+                android:textSize="22sp"
+                android:layout_marginTop="5dp"
                 android:layout_below="@id/rdo_grp_gender"
                 android:inputType="textMultiLine"
                 android:lines="6"
@@ -94,67 +103,78 @@
                 android:scrollbars="vertical"
                 android:gravity="top|start"/>
             <TextView
-                android:layout_width="70dp"
+                android:layout_width="82dp"
                 android:layout_height= "wrap_content"
                 android:id="@+id/txt_height_patient_edit"
                 android:hint="@string/height"
+                android:textSize="22sp"
+                android:textAlignment="center"
+                android:layout_marginTop="5dp"
                 android:layout_below="@id/edt_address_patient_edit"
-                android:textSize="18sp"/>
+                />
             <Spinner
-                android:layout_width="90dp"
+                android:layout_width="83dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/spin_feet_patient_edit"
                 android:layout_toEndOf="@id/txt_height_patient_edit"
-                android:layout_alignTop="@id/txt_height_patient_edit">
+                android:layout_alignTop="@id/txt_height_patient_edit"
+                android:textSize="22sp"
+                >
             </Spinner>
             <TextView
-                android:layout_width="43dp"
+                android:layout_width="49dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/txt_feet_patient_edit"
                 android:layout_toEndOf="@id/spin_feet_patient_edit"
                 android:layout_alignTop="@id/spin_feet_patient_edit"
                 android:hint="@string/feet"
-                android:textSize="18sp"/>
+                android:textSize="22sp"
+                />
             <Spinner
-                android:layout_width="90dp"
+                android:layout_width="83dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/spin_inch_patient_edit"
                 android:layout_toEndOf="@id/txt_feet_patient_edit"
                 android:layout_alignTop="@id/txt_feet_patient_edit"
-                >
+                android:textSize="22sp"
+               >
             </Spinner>
             <TextView
-                android:layout_width="53dp"
+                android:layout_width="66dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/txt_inch_patient_edit"
                 android:layout_toEndOf="@id/spin_inch_patient_edit"
                 android:layout_alignTop="@id/spin_inch_patient_edit"
                 android:hint="@string/inch"
-                android:textSize="18sp"/>
+                android:textSize="22sp"
+               />
 
             <TextView
-                android:layout_width="70dp"
+                android:layout_width="85dp"
                 android:layout_height= "wrap_content"
                 android:id="@+id/txt_weight_patient_edit"
                 android:hint="@string/weight"
                 android:layout_below="@id/txt_height_patient_edit"
-                android:textSize="18sp"/>
+                android:textSize="22sp"
+                android:layout_marginTop="5dp"/>
             <Spinner
-                android:layout_width="90dp"
+                android:layout_width="83dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/spin_weight_patient_edit"
                 android:layout_toEndOf="@id/txt_weight_patient_edit"
                 android:layout_alignTop="@id/txt_weight_patient_edit"
-                android:layout_marginStart="25dp">
+                android:layout_marginStart="25dp"
+                android:textSize="22sp"
+                >
             </Spinner>
             <TextView
-                android:layout_width="22dp"
+                android:layout_width="28dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/txt_kilo_patient_edit"
                 android:layout_toEndOf="@id/spin_weight_patient_edit"
                 android:layout_alignTop="@id/spin_weight_patient_edit"
                 android:hint="@string/kilo"
-                android:textSize="18sp"/>
+                android:textSize="22sp"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -164,7 +184,9 @@
                 android:inputType="textMultiLine"
                 android:lines="3"
                 android:scrollbars="vertical"
-                android:gravity="start|top"/>
+                android:gravity="start|top"
+                android:textSize="22sp"
+                android:layout_marginTop="5dp"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -173,7 +195,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="15dp"
-                android:text="@string/ok"/>
+                android:text="@string/ok"
+                android:textSize="22sp"
+                android:layout_marginTop="15dp"/>
         </RelativeLayout>
     </ScrollView>
 

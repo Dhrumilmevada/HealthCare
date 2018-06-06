@@ -78,6 +78,7 @@
     <string name="inch">inches</string>
 
     <string name="weight">Weight :-</string>
+    <string name="weight1">Weight</string>
 
     <string name="kilo">Kg</string>
 
@@ -91,11 +92,13 @@
 
     <string name="case_paper">Case paper</string>
 
+    <string name="case_paper_1">Case Paper</string>
+
     <string name="diet">Diet</string>
 
     <string name="work_out">Work out</string>
 
-    <string name="yoga_meditation">Yaga &amp; Meditation</string>
+    <string name="yoga_meditation">Yoga &amp; Meditation</string>
 
     <string name="logout">Logout</string>
 
@@ -195,5 +198,28 @@
         <item>11</item>
         <item>12</item>
     </string-array>
+
+    <string name="confirm">Confirm</string>
+
+    <string name="pending">Pending</string>
+
+    <string name="date">Date</string>
+
+    <string name="enter_hospital_name">Enter Hospital Name</string>
+
+    <string name="Select_date">Select Date</string>
+
+    <string name="desc_problem">Describe a Problem</string>
+
+    <string name="done">Done!</string>
+
+    <string name="doctor_name">Doctor Name</string>
+
+    <string name="appointment_on">Appointment On :</string>
+    <string name="symptoms">Symptoms</string>
+    <string name="does">Do</string>
+    <string name="dont">Don\'t</string>
+    <string name="prescription">Prescription</string>
+    <string name="panding">PANDING</string>
 
 </resources>

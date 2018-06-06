@@ -27,6 +27,7 @@ public class RatingDialog extends AppCompatDialogFragment implements View.OnClic
     private int rating;
     private Drawable img,img2;
     private RatingDialogListener dialogListener;
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

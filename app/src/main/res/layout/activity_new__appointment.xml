@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.dhrumil.healthcare.appointment.New_Appointment"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/rel_lay_new__appointment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <include
+            layout="@layout/reset_toolbar_layout"
+            android:id="@+id/tool_bar_new_appointment">
+        </include>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_hospital_appointment"
+            android:hint="@string/enter_hospital_name"
+            android:layout_below="@id/tool_bar_new_appointment"
+            android:textSize="24sp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_select_date_appointment"
+            android:hint="@string/Select_date"
+            android:layout_below="@id/edt_hospital_appointment"
+            android:textSize="24sp"
+            android:padding="7dp"
+            android:layout_marginTop="20dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_select_time_appointment"
+            android:hint="@string/Select_date"
+            android:layout_below="@id/txt_select_date_appointment"
+            android:textSize="24sp"
+            android:padding="7dp"
+            android:layout_marginTop="20dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_desc_appointment"
+            android:hint="@string/desc_problem"
+            android:layout_below="@id/txt_select_time_appointment"
+            android:inputType="textMultiLine"
+            android:lines="6"
+            android:minLines="4"
+            android:maxLines="8"
+            android:scrollbars="vertical"
+            android:gravity="top|start"
+            android:textSize="24sp"
+            android:layout_marginTop="20dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_done_appointment"
+            android:text="@string/done"
+            android:textAllCaps="false"
+            android:layout_below="@id/edt_desc_appointment"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:textSize="18sp" />
+    </RelativeLayout>
+</ScrollView>

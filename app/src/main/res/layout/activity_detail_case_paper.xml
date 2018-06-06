@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.example.dhrumil.healthcare.casePaper.NewCasePaper">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/rel_lay_new_case_paper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_casepaper_pat_name"
+            android:hint="@string/patient"
+            android:textSize="24sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_casepaper_pat_age"
+            android:hint="@string/age"
+            android:textSize="24sp"
+            android:layout_marginTop="15dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_casepaper_pat_weight"
+            android:hint="@string/weight1"
+            android:textSize="24sp"
+            android:layout_marginTop="15dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_casepaper_date"
+            android:hint="@string/date"
+            android:layout_marginTop="15dp"
+            android:textSize="24sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_casepaper_time"
+            android:hint="@string/time"
+            android:layout_marginTop="15dp"
+            android:textSize="24sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_casepaper_symptoms"
+            android:layout_marginTop="15dp"
+            android:hint="@string/symptoms"
+            android:textSize="24sp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_casepaper_do"
+            android:layout_marginTop="15dp"
+            android:hint="@string/does"
+            android:textSize="24sp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_casepaper_dont"
+            android:layout_marginTop="15dp"
+            android:hint="@string/dont"
+            android:textSize="24sp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_casepaper_prescription"
+            android:layout_marginTop="15dp"
+            android:hint="@string/prescription"
+            android:textSize="24sp"
+            />
+    </LinearLayout>
+</ScrollView>

@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.example.dhrumil.healthcare.R;
+import com.example.dhrumil.healthcare.appointment.New_Appointment;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HospitalDetail extends AppCompatActivity implements View.OnClickListener,RatingDialog.RatingDialogListener{
@@ -39,6 +41,7 @@ public class HospitalDetail extends AppCompatActivity implements View.OnClickLis
     private TextView txt_signup_text;
     private Drawable img;
     private Drawable img2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,6 +124,8 @@ public class HospitalDetail extends AppCompatActivity implements View.OnClickLis
             case R.id.rel_lay_book_appointment:
             case R.id.txt_footer_desc:
             case R.id.txt_signup_text:
+                Intent book = new Intent(HospitalDetail.this, New_Appointment.class);
+                startActivity(book);
                 break;
         }
         

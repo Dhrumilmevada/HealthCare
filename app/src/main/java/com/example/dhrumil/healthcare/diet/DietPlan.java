@@ -22,6 +22,7 @@ import android.widget.TextView;
 import com.example.dhrumil.healthcare.MainActivity;
 import com.example.dhrumil.healthcare.R;
 import com.example.dhrumil.healthcare.appointment.Appointment;
+import com.example.dhrumil.healthcare.casePaper.CasePaper;
 import com.example.dhrumil.healthcare.common.YoutubeData;
 import com.example.dhrumil.healthcare.dataBase.Database;
 import com.example.dhrumil.healthcare.dataBase.SharedPreference;
@@ -38,6 +39,8 @@ import com.example.dhrumil.healthcare.yoga.YogaRoutine;
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+
+import static com.example.dhrumil.healthcare.R.id.nav_view_appointment;
 
 public class DietPlan extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener{
 
@@ -286,6 +289,13 @@ public class DietPlan extends AppCompatActivity implements NavigationView.OnNavi
                 Intent book = new Intent(DietPlan.this,Appointment.class);
                 book.putExtra(LoginActivity.USER_TYPE,user_type);
                 startActivity(book);
+                break;
+            case R.id.nav_case_paper:
+                item.setChecked(true);
+                drawer_lay_diet.closeDrawer(nav_view_appointment);
+                Intent paper = new Intent(DietPlan.this,CasePaper.class);
+                paper.putExtra(LoginActivity.USER_TYPE,user_type);
+                startActivity(paper);
                 break;
         }
         return true;

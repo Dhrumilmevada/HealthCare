@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.example.dhrumil.healthcare.MainActivity;
 import com.example.dhrumil.healthcare.R;
 import com.example.dhrumil.healthcare.appointment.Appointment;
+import com.example.dhrumil.healthcare.casePaper.CasePaper;
 import com.example.dhrumil.healthcare.dataBase.SharedPreference;
 import com.example.dhrumil.healthcare.diet.DietPlan;
 import com.example.dhrumil.healthcare.editProfile.EditProfile;
@@ -30,6 +31,8 @@ import com.example.dhrumil.healthcare.login.LoginActivity;
 import com.example.dhrumil.healthcare.yoga.YogaRoutine;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+
+import static com.example.dhrumil.healthcare.R.id.nav_view_appointment;
 
 public class LaboratoryList extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener{
 
@@ -255,6 +258,13 @@ public class LaboratoryList extends AppCompatActivity implements NavigationView.
                 Intent book = new Intent(LaboratoryList.this,Appointment.class);
                 book.putExtra(LoginActivity.USER_TYPE,user_type);
                 startActivity(book);
+                break;
+            case R.id.nav_case_paper:
+                item.setChecked(true);
+                drawer_lay_laboratory_list.closeDrawer(nav_view_appointment);
+                Intent paper = new Intent(LaboratoryList.this,CasePaper.class);
+                paper.putExtra(LoginActivity.USER_TYPE,user_type);
+                startActivity(paper);
                 break;
         }
         return true;

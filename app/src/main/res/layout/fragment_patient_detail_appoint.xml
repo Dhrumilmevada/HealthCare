@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:id="@+id/lin_lay_patient_detail_fragment"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_hos_name"
+            android:textSize="24sp"
+            android:hint="@string/hospital_name"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_doc_name"
+            android:layout_marginTop="15dp"
+            android:textSize="24sp"
+            android:hint="@string/doctor_name"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_hospital_add"
+            android:layout_marginTop="15dp"
+            android:textSize="24sp"
+            android:hint="@string/address"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_appointment"
+            android:layout_marginTop="15dp"
+            android:textSize="24sp"
+            android:hint="@string/appointment_on"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_appointment_date"
+            android:layout_marginTop="15dp"
+            android:textSize="24sp"
+            android:hint="@string/date"
+            android:layout_marginStart="30dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_appointment_time"
+            android:layout_marginTop="15dp"
+            android:textSize="24sp"
+            android:hint="@string/time"
+            android:layout_marginStart="30dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_desc_appoint"
+            android:layout_marginTop="15dp"
+            android:textSize="24sp"
+            android:hint="@string/desc_problem"
+            />
+
+    </LinearLayout>
+</ScrollView>
